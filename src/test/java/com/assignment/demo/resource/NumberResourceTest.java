@@ -24,7 +24,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.assignment.demo.dto.NumberDTO;
-import com.assignment.demo.repository.NumberRepository;
 import com.assignment.demo.service.NumberService;
 import com.assignment.entity.NumberEntity;
 
@@ -42,9 +41,6 @@ public class NumberResourceTest {
 
 	@MockBean
 	private DiscoveryClient discoveryClient;
-
-	@MockBean
-	private NumberRepository repository;
 
 	private NumberEntity numberEntity = null;
 
