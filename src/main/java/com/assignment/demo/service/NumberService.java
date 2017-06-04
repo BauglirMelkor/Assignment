@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -72,7 +73,12 @@ public class NumberService {
 		}
 
 		PageRequest pageRequest = new PageRequest(0, 1, sort);
-		return repository.findAll(pageRequest).getContent().get(0);
+		Page<NumberEntity> pageNumberEntity=repository.findAll(pageRequest);
+		if(pageNumberEntity==null||pageNumberEntity.getContent()==null||pageNumberEntity.getContent().size()==0){
+			throw new NumberCannotBeFoundException("Number Cannot Be Found");
+		}
+		
+		return pageNumberEntity.getContent().get(0);
 	}
 
 }

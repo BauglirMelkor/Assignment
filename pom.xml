@@ -22,6 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		 <docker.image.prefix>assignmentdocker</docker.image.prefix>
 	</properties>
 
 	<dependencies>
@@ -48,6 +49,27 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			
+			<plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.13</version>
+                <configuration>
+                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <dockerTlsVerify>1</dockerTlsVerify>
+                    <dockerHost>https://[fe80::215:5dff:fe01:42c]:2376</dockerHost>
+                    <dockerCertPath>I:\limanlar\machines\default</dockerCertPath>
+                    <dockerMachineName>default</dockerMachineName>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
 			</plugin>
 		</plugins>
 	</build>
