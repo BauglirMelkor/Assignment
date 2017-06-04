@@ -73,11 +73,12 @@ public class NumberService {
 		}
 
 		PageRequest pageRequest = new PageRequest(0, 1, sort);
-		Page<NumberEntity> pageNumberEntity=repository.findAll(pageRequest);
-		if(pageNumberEntity==null||pageNumberEntity.getContent()==null||pageNumberEntity.getContent().size()==0){
+		Page<NumberEntity> pageNumberEntity = repository.findAll(pageRequest);
+		if (pageNumberEntity == null || pageNumberEntity.getContent() == null
+				|| pageNumberEntity.getContent().size() == 0) {
 			throw new NumberCannotBeFoundException("Number Cannot Be Found");
 		}
-		
+
 		return pageNumberEntity.getContent().get(0);
 	}
 

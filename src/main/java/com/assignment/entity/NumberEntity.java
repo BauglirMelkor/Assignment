@@ -1,15 +1,13 @@
 package com.assignment.entity;
 
-
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 
-
 public class NumberEntity {
 	@Id
-    private Long number;
-	
+	private Long number;
+
 	private Date insert_date;
 
 	public Long getNumber() {

@@ -11,9 +11,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.client.RestTemplate;
 
 import com.assignment.demo.dto.NumberDTO;
 import com.assignment.demo.repository.NumberRepository;
@@ -24,7 +22,7 @@ import com.assignment.entity.NumberEntity;
 public class NumberIntegrationTest {
 
 	@Autowired
-    private TestRestTemplate restTemplate;
+	private TestRestTemplate restTemplate;
 
 	@Autowired
 	private NumberRepository repository;
@@ -85,8 +83,7 @@ public class NumberIntegrationTest {
 		assert (numberDTO.getNumber().equals(1000000L));
 
 	}
-	
-	
+
 	@Test
 	public void testListAscendingSuccessfully() throws Exception {
 
@@ -94,7 +91,7 @@ public class NumberIntegrationTest {
 		assert (numberDTO[0].getNumber().equals(1000000L));
 
 	}
-	
+
 	@Test
 	public void testListDescendingSuccessfully() throws Exception {
 

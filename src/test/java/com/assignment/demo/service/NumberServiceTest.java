@@ -113,13 +113,13 @@ public class NumberServiceTest {
 		NumberEntity numberEntity = numberService.findMaxMin(false);
 		assert (numberEntity.getNumber().equals(1L));
 	}
-	
+
 	@Test(expected = NumberCannotBeFoundException.class)
 	public void testGetMinimumNumberCannotBeFound() throws Exception {
 		PageImpl<NumberEntity> pageRequest = new PageImpl(numberListEntity);
 		when(repository.findAll(any(Pageable.class))).thenReturn(null);
 		NumberEntity numberEntity = numberService.findMaxMin(false);
-		
+
 	}
 
 	@Test
@@ -129,13 +129,13 @@ public class NumberServiceTest {
 		NumberEntity numberEntity = numberService.findMaxMin(true);
 		assert (numberEntity.getNumber().equals(1L));
 	}
-	
+
 	@Test(expected = NumberCannotBeFoundException.class)
 	public void testGetMaximumNumberCannotBeFound() throws Exception {
 		PageImpl<NumberEntity> pageRequest = new PageImpl(numberListEntity);
 		when(repository.findAll(any(Pageable.class))).thenReturn(null);
 		NumberEntity numberEntity = numberService.findMaxMin(true);
-		
+
 	}
 
 }
